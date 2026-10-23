@@ -15,6 +15,12 @@ test('production seed contains no accounts or fixed credentials', () => {
   assert.doesNotMatch(source, /bcrypt|password_hash|INSERT INTO user|INSERT INTO report/);
 });
 
+test('schema bootstrap cannot drop existing tables', () => {
+  const source = fs.readFileSync(path.join(__dirname, '..', 'database', 'schema.sql'), 'utf8');
+  assert.doesNotMatch(source, /DROP\s+TABLE/i);
+  assert.match(source, /CREATE TABLE IF NOT EXISTS department/);
+});
+
 test('sensitive local files stay ignored', () => {
   const source = fs.readFileSync(path.join(__dirname, '..', '.gitignore'), 'utf8');
   for (const entry of ['.env', '*.key', '*.pem', 'TEST_ACCOUNTS.md', 'storage/uploads/']) assert.match(source, new RegExp(entry.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));

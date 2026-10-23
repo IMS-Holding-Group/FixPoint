@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
@@ -43,8 +44,53 @@ function cleanup() {
     .catch((err) => logger.error(err));
 }
 
+async function ensureSchema() {
+  const existing = await db.query("SHOW TABLES LIKE 'department'");
+  if (existing.length) return;
+  const mysql = require('mysql2/promise');
+  const conn = await mysql.createConnection({
+    host: config.db.host,
+    port: config.db.port,
+    user: config.db.user,
+    password: config.db.password,
+    database: config.db.name,
+    multipleStatements: true,
+    charset: 'utf8mb4',
+    timezone: '+03:00',
+    decimalNumbers: true
+  });
+  try {
+    await conn.query("SET time_zone = '+03:00'");
+    await conn.query(fs.readFileSync(path.join(ROOT, 'database', 'schema.sql'), 'utf8'));
+    const { seed } = require('../database/seed');
+    await conn.beginTransaction();
+    await seed(async (sql, params = []) => (await conn.query(sql, params))[0]);
+    await conn.commit();
+  } catch (err) {
+    await conn.rollback().catch(() => {});
+    throw err;
+  } finally { await conn.end(); }
+}
+
+async function ensureAdmin() {
+  const password = process.env.BOOTSTRAP_ADMIN_PASSWORD;
+  if (!password) return;
+  const [{ n }] = await db.query("SELECT COUNT(*) AS n FROM user WHERE role = 'ADMIN'");
+  if (n > 0) return;
+  const bcrypt = require('bcryptjs');
+  const v = require('./utils/validators');
+  await db.query(
+    "INSERT INTO user (university_id, full_name, email, password_hash, role) VALUES (?, ?, ?, ?, 'ADMIN')",
+    ['admin', 'مدير النظام', 'admin@example.com', await bcrypt.hash(v.password(password), 12)]
+  );
+}
+
 async function start() {
-  try { await db.query('SELECT 1'); } catch (err) {
+  try {
+    await db.query('SELECT 1');
+    await ensureSchema();
+    await ensureAdmin();
+  } catch (err) {
     logger.error(err);
     console.error('تعذر الاتصال بقاعدة البيانات. تأكد من تشغيل MySQL ومن صحة بيانات الاتصال في ملف .env، ومن تنفيذ الأمر npm run db:init.');
     process.exit(1);
