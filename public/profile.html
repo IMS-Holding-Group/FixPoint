@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>الملف الشخصي | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/profile.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<nav class="mainnav" id="mainnav" aria-label="القائمة الرئيسية"></nav>
+<main class="container" id="main">
+  <div class="page-head">
+    <div>
+      <h1>الملف الشخصي</h1>
+      <p>بيانات حسابك وتغيير كلمة السر</p>
+    </div>
+  </div>
+  <div class="grid-2">
+    <section class="panel">
+      <h2>بيانات الحساب</h2>
+      <dl class="details" id="info"></dl>
+    </section>
+    <section class="panel">
+      <h2>تغيير كلمة السر</h2>
+      <div id="formAlert"></div>
+      <form id="passwordForm" novalidate>
+        <div class="field">
+          <label for="current_password">كلمة السر الحالية</label>
+          <div class="password-wrap">
+            <input id="current_password" name="current_password" type="password" autocomplete="current-password" maxlength="128" required>
+            <button type="button" class="password-toggle" aria-label="إظهار كلمة السر" aria-pressed="false" data-icon="eye"></button>
+          </div>
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label for="new_password">كلمة السر الجديدة</label>
+          <div class="password-wrap">
+            <input id="new_password" name="new_password" type="password" autocomplete="new-password" maxlength="72" required>
+            <button type="button" class="password-toggle" aria-label="إظهار كلمة السر" aria-pressed="false" data-icon="eye"></button>
+          </div>
+          <p class="hint">8 خانات على الأقل وتتضمن حرفاً ورقماً</p>
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label for="confirm">تأكيد كلمة السر الجديدة</label>
+          <input id="confirm" name="confirm" type="password" autocomplete="new-password" maxlength="72" required>
+          <div class="field-error"></div>
+        </div>
+        <button type="submit" class="btn btn-primary" data-icon="lock">حفظ كلمة السر</button>
+      </form>
+    </section>
+  </div>
+</main>
+</body>
+</html>

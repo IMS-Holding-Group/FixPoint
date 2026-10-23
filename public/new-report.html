@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>بلاغ جديد | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/datetime.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/map.js" defer></script>
+<script src="/assets/js/new-report.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<nav class="mainnav" id="mainnav" aria-label="القائمة الرئيسية"></nav>
+<main class="container" id="main">
+  <div class="page-head">
+    <div>
+      <h1>بلاغ جديد</h1>
+      <p>صف المشكلة وحدد موقعها وأرفق صورة لها</p>
+    </div>
+  </div>
+  <div id="formAlert"></div>
+  <form id="reportForm" novalidate>
+    <div class="grid-2">
+      <section class="panel">
+        <fieldset class="form-section">
+          <legend>المشكلة</legend>
+          <div class="form-row">
+            <div class="field">
+              <label for="category_id">التصنيف</label>
+              <select id="category_id" name="category_id" required><option value="">اختر التصنيف</option></select>
+              <div class="field-error"></div>
+            </div>
+            <div class="field">
+              <label for="priority">الأولوية المقترحة</label>
+              <select id="priority" name="priority">
+                <option value="LOW">منخفضة</option>
+                <option value="MEDIUM">متوسطة</option>
+                <option value="HIGH">عالية</option>
+                <option value="URGENT">عاجلة</option>
+              </select>
+              <div class="field-error"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="description">وصف المشكلة</label>
+            <textarea id="description" name="description" maxlength="1000" required></textarea>
+            <span class="counter" id="descCounter" aria-live="polite">0 / 1000</span>
+            <div class="field-error"></div>
+          </div>
+        </fieldset>
+        <fieldset class="form-section">
+          <legend>الصور</legend>
+          <div class="field">
+            <label for="images">إرفاق صور المشكلة</label>
+            <input id="images" name="images" type="file" accept="image/jpeg,image/png" multiple>
+            <p class="hint">من صورة إلى 5 صور بصيغة JPEG أو PNG، بحد 5 ميجابايت للصورة</p>
+            <div class="field-error"></div>
+          </div>
+          <div class="thumbs" id="thumbs"></div>
+        </fieldset>
+      </section>
+      <section class="panel">
+        <fieldset class="form-section">
+          <legend>الموقع</legend>
+          <div class="form-row">
+            <div class="field">
+              <label for="building_id">المبنى</label>
+              <select id="building_id" name="building_id" required><option value="">اختر المبنى</option></select>
+              <div class="field-error"></div>
+            </div>
+            <div class="field">
+              <label for="location_id">الدور أو الغرفة</label>
+              <select id="location_id" name="location_id" required disabled><option value="">اختر المبنى أولاً</option></select>
+              <div class="field-error"></div>
+            </div>
+          </div>
+          <span class="field-label">نقطة العطل على الخريطة</span>
+          <div class="map-box" id="map"><div class="map-placeholder">اختر المبنى لعرض الخريطة، ثم انقر على موقع العطل</div></div>
+          <p class="hint map-msg" id="mapMsg" role="status"></p>
+          <input type="hidden" name="latitude" id="latitude">
+          <input type="hidden" name="longitude" id="longitude">
+        </fieldset>
+      </section>
+    </div>
+    <div class="form-actions mt">
+      <button type="submit" class="btn btn-primary" data-icon="send">إرسال البلاغ</button>
+      <a class="btn btn-ghost" href="/home.html">إلغاء</a>
+    </div>
+  </form>
+  <section class="panel" id="success" hidden>
+    <div class="empty">
+      <h2 id="successTitle">تم استلام بلاغك</h2>
+      <p id="successStatus"></p>
+      <div class="form-actions">
+        <a class="btn btn-primary" id="successLink" href="/my-reports.html">عرض البلاغ</a>
+        <a class="btn btn-secondary" href="/new-report.html">بلاغ جديد</a>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

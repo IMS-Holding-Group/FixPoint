@@ -1,0 +1,40 @@
+/* ===== تنسيق الطباعة ===== */
+@page {
+ margin: 14mm;
+ size: A4 }
+
+body {
+ font-size: 12pt;
+ color: #000;
+ background: #fff }
+
+.topbar, .mainnav, .no-print, .toast, .alert { display: none !important }
+
+.container {
+ margin: 0;
+ padding: 0;
+ max-width: none }
+
+.report-sheet {
+ padding: 0;
+ border: 0;
+ box-shadow: none }
+
+.report-logo { display: block }
+
+.table-wrap {
+ border: 1px solid #999;
+ overflow: visible }
+
+.table th, .table td { border-bottom: 1px solid #bbb }
+
+.table th {
+ position: static;
+ color: #000;
+ background: #eee;
+ -webkit-print-color-adjust: exact;
+ print-color-adjust: exact }
+
+tr { page-break-inside: avoid }
+
+h2 { page-break-after: avoid }

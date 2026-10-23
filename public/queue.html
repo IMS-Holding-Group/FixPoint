@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>قائمة العمل | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/datetime.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/queue.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<nav class="mainnav" id="mainnav" aria-label="القائمة الرئيسية"></nav>
+<main class="container" id="main">
+  <div class="page-head">
+    <div>
+      <h1>قائمة العمل</h1>
+      <p id="deptName"></p>
+    </div>
+  </div>
+  <div id="listAlert"></div>
+  <section class="panel">
+    <form class="filters" id="filters">
+      <div class="field">
+        <label for="f_status">الحالة</label>
+        <select id="f_status" name="status">
+          <option value="">المفتوحة والجارية</option>
+          <option value="OPEN">مفتوح</option>
+          <option value="IN_PROGRESS">قيد المعالجة</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f_category">التصنيف</label>
+        <select id="f_category" name="category_id"><option value="">كل التصنيفات</option></select>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" data-icon="search">تطبيق</button>
+        <button type="reset" class="btn btn-ghost">مسح</button>
+      </div>
+    </form>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">الرقم</th><th scope="col">الأولوية</th><th scope="col">الحالة</th><th scope="col">التصنيف</th><th scope="col">الموقع</th><th scope="col">الوصف</th><th scope="col">تاريخ الإنشاء</th><th scope="col"><span class="visually-hidden">إجراءات</span></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="pager" id="pager"></div>
+  </section>
+</main>
+</body>
+</html>

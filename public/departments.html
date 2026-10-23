@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>الأقسام | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/departments.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<nav class="mainnav" id="mainnav" aria-label="القائمة الرئيسية"></nav>
+<main class="container" id="main">
+  <div class="page-head">
+    <div>
+      <h1>الأقسام</h1>
+      <p>أقسام الصيانة المسؤولة عن معالجة البلاغات</p>
+    </div>
+    <div class="page-actions">
+      <button type="button" class="btn btn-primary" id="addBtn" data-icon="plus">إضافة قسم</button>
+    </div>
+  </div>
+  <div id="listAlert"></div>
+  <section class="panel">
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">اسم القسم</th><th scope="col">بريد التواصل</th><th scope="col">إجراءات</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="pager" id="pager"></div>
+  </section>
+  <dialog class="modal" id="editDialog" aria-labelledby="editTitle">
+    <form novalidate>
+      <div class="modal-head">
+        <h2 class="modal-title" id="editTitle">إضافة قسم</h2>
+        <button type="button" class="icon-btn" data-close aria-label="إغلاق" data-icon="x"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-alert"></div>
+        <div class="field">
+          <label for="d_name">اسم القسم</label>
+          <input id="d_name" name="name" type="text" maxlength="100" required>
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label for="d_email">بريد التواصل (اختياري)</label>
+          <input id="d_email" name="contact_email" type="email" maxlength="120" dir="ltr">
+          <div class="field-error"></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="submit" class="btn btn-primary">حفظ</button>
+        <button type="button" class="btn btn-ghost" data-close>إلغاء</button>
+      </div>
+    </form>
+  </dialog>
+</main>
+</body>
+</html>

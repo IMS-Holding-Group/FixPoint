@@ -1,0 +1,20 @@
+Options -Indexes
+ServerSignature Off
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(env|example|sql|bak|backup|log|json|lock|md|ini|conf)$">
+  Require all denied
+</FilesMatch>
+
+RedirectMatch 404 /\.git
+RedirectMatch 404 ^/(server|database|storage|logs|backups|node_modules)(/|$)
+
+<IfModule mod_headers.c>
+  Header always unset X-Powered-By
+  Header unset X-Powered-By
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+</IfModule>

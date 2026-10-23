@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>تسجيل الدخول | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/login.js" defer></script>
+</head>
+<body class="auth-page">
+<main class="auth-shell" id="main">
+  <section class="auth-brand">
+    <img class="auth-logo" src="/assets/images/logo.png" alt="FixPoint">
+    <p class="auth-lead">بلاغات مرافق الجامعة</p>
+  </section>
+  <section class="auth-panel">
+    <div class="auth-box">
+      <h1>تسجيل الدخول</h1>
+      <div id="formAlert"></div>
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="identifier">الرقم الجامعي أو البريد الإلكتروني</label>
+          <input id="identifier" name="identifier" type="text" autocomplete="username" maxlength="120" required autofocus>
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label for="password">كلمة السر</label>
+          <div class="password-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" maxlength="128" required>
+            <button type="button" class="password-toggle" aria-label="إظهار كلمة السر" aria-pressed="false" data-icon="eye"></button>
+          </div>
+          <div class="field-error"></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">دخول</button>
+      </form>
+      <p class="auth-switch">ليس لديك حساب؟ <a href="/register.html">إنشاء حساب مبلِّغ</a></p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

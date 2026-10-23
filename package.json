@@ -1,0 +1,24 @@
+{
+  "name": "fixpoint",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FixPoint: نظام إلكتروني لإدارة بلاغات مرافق الجامعة",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "db:init": "node database/init.js",
+    "admin:create": "node database/create-admin.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "mysql2": "^3.14.0"
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>تقرير المباني وأنواع الأعطال | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/print.css" media="print">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/datetime.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/print-analysis.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<nav class="mainnav" id="mainnav" aria-label="القائمة الرئيسية"></nav>
+<main class="container" id="main">
+  <section class="panel no-print">
+    <div id="formAlert"></div>
+    <form class="filters" id="periodForm" novalidate>
+      <div class="field">
+        <label for="from">من تاريخ</label>
+        <input id="from" name="from" type="date" required>
+        <div class="field-error"></div>
+      </div>
+      <div class="field">
+        <label for="to">إلى تاريخ</label>
+        <input id="to" name="to" type="date" required>
+        <div class="field-error"></div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" data-icon="refresh">عرض التقرير</button>
+        <button type="button" class="btn btn-secondary" id="printBtn" data-icon="printer">طباعة</button>
+        <a class="btn btn-ghost" href="/dashboard.html">لوحة التحكم</a>
+      </div>
+    </form>
+  </section>
+  <article class="report-sheet">
+    <header class="report-header">
+      <div>
+        <h1>تقرير تحليل المباني وأنواع الأعطال</h1>
+        <p class="report-meta" id="period"></p>
+        <p class="report-meta" id="generated"></p>
+      </div>
+      <img class="report-logo" src="/assets/images/logo.png" alt="FixPoint">
+    </header>
+    <h2>البلاغات حسب المبنى</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">المبنى</th><th scope="col">العدد (النسبة)</th></tr></thead>
+        <tbody id="buildingRows"></tbody>
+      </table>
+    </div>
+    <h2>البلاغات حسب نوع العطل</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">التصنيف</th><th scope="col">العدد (النسبة)</th></tr></thead>
+        <tbody id="categoryRows"></tbody>
+      </table>
+    </div>
+    <h2>أكثر الأعطال تكراراً حسب المبنى</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">المبنى</th><th scope="col">التصنيف</th><th scope="col">العدد (النسبة)</th></tr></thead>
+        <tbody id="pairRows"></tbody>
+      </table>
+    </div>
+    <h2>متوسط زمن المعالجة حسب التصنيف</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">التصنيف</th><th scope="col">البلاغات المغلقة</th><th scope="col">متوسط زمن المعالجة</th></tr></thead>
+        <tbody id="resolutionRows"></tbody>
+      </table>
+    </div>
+  </article>
+</main>
+</body>
+</html>

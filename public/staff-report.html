@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>تفاصيل البلاغ والتحديث | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/datetime.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/map.js" defer></script>
+<script src="/assets/js/staff-report.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<nav class="mainnav" id="mainnav" aria-label="القائمة الرئيسية"></nav>
+<main class="container" id="main">
+  <div class="page-head">
+    <h1 id="title">تفاصيل البلاغ والتحديث</h1>
+    <div class="page-actions">
+      <a class="btn btn-ghost" href="/queue.html" data-icon="back">رجوع إلى قائمة العمل</a>
+    </div>
+  </div>
+  <section class="panel" id="noReport" hidden>
+    <div class="empty">
+      <span>اختر بلاغاً من قائمة العمل لعرض تفاصيله وتحديث حالته</span>
+      <a class="btn btn-primary" href="/queue.html">فتح قائمة العمل</a>
+    </div>
+  </section>
+  <section class="panel" id="updatePanel" hidden>
+    <h2>تحديث الحالة</h2>
+    <div id="formAlert"></div>
+    <form id="statusForm" novalidate>
+      <div class="form-row">
+        <div class="field">
+          <label for="status">الحالة</label>
+          <select id="status" name="status"></select>
+          <div class="field-error"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="note">الملاحظة</label>
+        <textarea id="note" name="note" maxlength="1000"></textarea>
+        <p class="hint">ملاحظة الحل مطلوبة عند إغلاق البلاغ</p>
+        <div class="field-error"></div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="updateBtn" data-icon="refresh">تحديث الحالة</button>
+        <button type="button" class="btn btn-secondary" id="closeBtn" data-icon="check">إغلاق البلاغ</button>
+      </div>
+    </form>
+  </section>
+  <section class="panel" id="closedPanel" hidden>
+    <p class="muted">هذا البلاغ مغلق ولا يمكن تعديل حالته.</p>
+  </section>
+  <div id="details"></div>
+</main>
+</body>
+</html>

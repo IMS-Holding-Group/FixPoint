@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+TEST_ACCOUNTS.md
+graphify-out/
+node_modules/
+logs/
+backups/
+storage/uploads/
+tmpdb/

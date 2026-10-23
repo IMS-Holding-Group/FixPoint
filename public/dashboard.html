@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>لوحة التحكم | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/charts.js" defer></script>
+<script src="/assets/js/dashboard.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<nav class="mainnav" id="mainnav" aria-label="القائمة الرئيسية"></nav>
+<main class="container" id="main">
+  <div class="page-head">
+    <div>
+      <h1>لوحة التحكم</h1>
+      <p>نظرة عامة على بلاغات المرافق</p>
+    </div>
+    <div class="page-actions">
+      <a class="btn btn-ghost" href="/print-status.html" data-icon="printer">تقرير ملخص الحالات</a>
+      <a class="btn btn-ghost" href="/print-analysis.html" data-icon="printer">تقرير المباني وأنواع الأعطال</a>
+    </div>
+  </div>
+  <section class="kpis" aria-label="المؤشرات الرئيسية">
+    <div class="kpi kpi-open"><span class="kpi-label" data-icon="alert">مفتوحة</span><span class="kpi-value" id="kpiOpen">-</span></div>
+    <div class="kpi kpi-progress"><span class="kpi-label" data-icon="clock">قيد المعالجة</span><span class="kpi-value" id="kpiProgress">-</span></div>
+    <div class="kpi kpi-closed"><span class="kpi-label" data-icon="check">مغلقة</span><span class="kpi-value" id="kpiClosed">-</span></div>
+    <div class="kpi"><span class="kpi-label" data-icon="clock">متوسط زمن المعالجة</span><span class="kpi-value is-text" id="kpiAvg">-</span></div>
+  </section>
+  <div class="grid-2">
+    <section class="panel">
+      <h2>البلاغات حسب المبنى</h2>
+      <div class="chart" id="chartBuildings"><div class="skeleton"></div></div>
+    </section>
+    <section class="panel">
+      <h2>أكثر أنواع الأعطال تكراراً</h2>
+      <div class="chart" id="chartCategories"><div class="skeleton"></div></div>
+    </section>
+  </div>
+  <section class="panel mt">
+    <h2>متوسط زمن المعالجة حسب التصنيف</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">التصنيف</th><th scope="col">البلاغات المغلقة</th><th scope="col">متوسط زمن المعالجة</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</body>
+</html>

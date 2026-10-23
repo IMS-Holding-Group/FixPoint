@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#083680">
+<title>المستخدمون | FixPoint</title>
+<link rel="icon" href="/assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<script src="/assets/js/icons.js" defer></script>
+<script src="/assets/js/api.js" defer></script>
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/users.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<nav class="mainnav" id="mainnav" aria-label="القائمة الرئيسية"></nav>
+<main class="container" id="main">
+  <div class="page-head">
+    <div>
+      <h1>المستخدمون</h1>
+      <p>إدارة حسابات المبلِّغين وموظفي الصيانة والمديرين</p>
+    </div>
+    <div class="page-actions">
+      <button type="button" class="btn btn-primary" id="addBtn" data-icon="plus">إضافة مستخدم</button>
+    </div>
+  </div>
+  <div id="listAlert"></div>
+  <section class="panel">
+    <form class="filters" id="filters">
+      <div class="field field-wide">
+        <label for="f_q">بحث</label>
+        <input id="f_q" name="q" type="search" maxlength="100" placeholder="الاسم أو الرقم الجامعي أو البريد">
+      </div>
+      <div class="field">
+        <label for="f_role">الدور</label>
+        <select id="f_role" name="role">
+          <option value="">كل الأدوار</option>
+          <option value="REPORTER">مبلِّغ</option>
+          <option value="STAFF">موظف صيانة</option>
+          <option value="ADMIN">مدير النظام</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" data-icon="search">تطبيق</button>
+        <button type="reset" class="btn btn-ghost">مسح</button>
+      </div>
+    </form>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">الرقم الجامعي</th><th scope="col">الاسم</th><th scope="col">البريد الإلكتروني</th><th scope="col">الدور</th><th scope="col">القسم</th><th scope="col">إجراءات</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="pager" id="pager"></div>
+  </section>
+  <dialog class="modal" id="editDialog" aria-labelledby="editTitle">
+    <form novalidate>
+      <div class="modal-head">
+        <h2 class="modal-title" id="editTitle">إضافة مستخدم</h2>
+        <button type="button" class="icon-btn" data-close aria-label="إغلاق" data-icon="x"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-alert"></div>
+        <div class="form-row">
+          <div class="field">
+            <label for="u_uid">الرقم الجامعي أو المعرّف</label>
+            <input id="u_uid" name="university_id" type="text" maxlength="20" dir="ltr" required>
+            <div class="field-error"></div>
+          </div>
+          <div class="field">
+            <label for="u_name">الاسم الكامل</label>
+            <input id="u_name" name="full_name" type="text" maxlength="100" required>
+            <div class="field-error"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="u_email">البريد الإلكتروني</label>
+          <input id="u_email" name="email" type="email" maxlength="120" dir="ltr" required>
+          <div class="field-error"></div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="u_role">الدور</label>
+            <select id="u_role" name="role" required>
+              <option value="REPORTER">مبلِّغ</option>
+              <option value="STAFF">موظف صيانة</option>
+              <option value="ADMIN">مدير النظام</option>
+            </select>
+            <div class="field-error"></div>
+          </div>
+          <div class="field" id="deptField">
+            <label for="u_dept">القسم</label>
+            <select id="u_dept" name="department_id"></select>
+            <div class="field-error"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="u_password">كلمة السر</label>
+          <input id="u_password" name="password" type="password" maxlength="72" autocomplete="new-password">
+          <p class="hint" id="passwordHint">8 خانات على الأقل وتتضمن حرفاً ورقماً</p>
+          <div class="field-error"></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="submit" class="btn btn-primary">حفظ</button>
+        <button type="button" class="btn btn-ghost" data-close>إلغاء</button>
+      </div>
+    </form>
+  </dialog>
+</main>
+</body>
+</html>
